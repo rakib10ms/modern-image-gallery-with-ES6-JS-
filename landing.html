@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Targeting images</title>
+    <style> 
+    body{
+        margin: 20px;
+        padding: 0;
+        background-color: #333333;  
+    }
+    .container{
+        max-width: 760px;
+        margin: auto;
+        border: #ffffff solid 3px;
+        background-color: #ffffff;
+    }
+    .main-img img, .imgs img{
+        width: 100%;
+        background-size: cover;
+        height: auto;
+    }
+    .imgs{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap:5px;
+    }
+    </style>
+</head>
+<body>
+
+<div class="container"> 
+    <div class="main-img"> 
+        <img src="img1.jpg" id="current"> 
+    </div>
+    <div class="imgs"> 
+
+        <img src="img2.jpg "> 
+        <img src="img3.jpg "> 
+        <img src="img4.jpg"> 
+
+    </div>
+</div>
+
+
+<script>
+const current=document.querySelector("#current");
+const imgs=document.querySelectorAll(".imgs img");
+const opacity=0.4;
+
+imgs.forEach(img =>img.addEventListener('click',imgClick));
+
+function imgClick(e){
+    e.preventDefault();
+    imgs.forEach(img =>(img.style.opacity=1));
+    current.src=e.target.src;
+    e.target.style.opacity=opacity;
+    
+}
+</script>   
+</body>
+</html>
